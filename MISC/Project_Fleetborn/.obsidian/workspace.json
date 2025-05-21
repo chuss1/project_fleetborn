@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project Fleetborn.md",
+                "file": "Tasks/Feature Checklist.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Project Fleetborn"
+              "title": "Feature Checklist"
             }
           }
         ]
@@ -184,10 +184,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2a20ba105b0fe672",
+  "active": "7cc866ab33a182ba",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Project Fleetborn.md",
-    "Untitled"
+    "Tasks/Feature Checklist.md",
+    "Milestones/Weekly Log.md",
+    "Milestones/Roadmap.md",
+    "Technical/Engine Architecture.md",
+    "Technical/Untitled.md",
+    "Technical/Odin Raylib Setup.md",
+    "UI UX/Menus.md",
+    "UI UX/Overworld UI.md",
+    "UI UX/Battle Viewer UI.md",
+    "UI UX/Fleet Planner.md",
+    "UI UX/Moodboards.md",
+    "UI UX/Fleet Builder UI.md",
+    "System Mechanics/Simulation Rules.md",
+    "System Mechanics/Resource Economy.md",
+    "System Mechanics/Formation System.md",
+    "System Mechanics/Damage Models.md",
+    "System Mechanics/Battle System.md",
+    "Game Design/Progression.md",
+    "Game Design/Combat Simulation.md",
+    "Game Design/AI Behavior.md",
+    "Game Design/Ship Design.md",
+    "Game Design/Fleet Management.md",
+    "Game Design/Game Loop.md",
+    "Narrative/Star Systems.md",
+    "Narrative/Key Characters.md",
+    "Narrative/Mission Overviews.md",
+    "Untitled",
+    "Tasks",
+    "Milestones",
+    "Technical",
+    "UI UX",
+    "System Mechanics",
+    "Game Design",
+    "Narrative",
+    "Concepts"
   ]
 }
