@@ -18,6 +18,6 @@
 project_fleetborn/
 ├── game.odin             # Entry point and main loop
 ├── core/                 # Game logic (fleet, ship, simulation)
-├── renderer/             # Drawing code
 ├── assets/               # Sprites, models, audio
+├── MISC/                 # Miscellaneous files like Obsidian
 └── README.md

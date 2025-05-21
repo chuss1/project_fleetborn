@@ -6,7 +6,6 @@
       {
         "id": "ab5b9714c820c03c",
         "type": "tabs",
-        "dimension": 57.97448165869219,
         "children": [
           {
             "id": "2a20ba105b0fe672",
@@ -14,30 +13,35 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Technical/Engine Architecture.md",
+                "file": "Concepts/Core Idea.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Engine Architecture"
-            }
+              "title": "Core Idea"
+            },
+            "group": "1f605ce6314a8696"
           }
         ]
       },
       {
-        "id": "0f43ea36b8c52c0e",
+        "id": "f9ba3f1ba8303b37",
         "type": "tabs",
-        "dimension": 42.025518341307816,
         "children": [
           {
-            "id": "4bcd69217e701ec2",
+            "id": "06bbeebb334fe0d0",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
-            }
+              "type": "markdown",
+              "state": {
+                "file": "Concepts/Core Idea.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Core Idea"
+            },
+            "group": "1f605ce6314a8696"
           }
         ]
       }
@@ -188,15 +192,15 @@
   },
   "active": "2a20ba105b0fe672",
   "lastOpenFiles": [
-    "Technical/Odin Raylib Setup.md",
     "Concepts/Inspirations.md",
     "Concepts/Game Pillars.md",
     "Concepts/Core Idea.md",
+    "Technical/Engine Architecture.md",
+    "Technical/Odin Raylib Setup.md",
     "Project Fleetborn.md",
     "Tasks/Feature Checklist.md",
     "Milestones/Weekly Log.md",
     "Milestones/Roadmap.md",
-    "Technical/Engine Architecture.md",
     "Technical/Untitled.md",
     "UI UX/Menus.md",
     "UI UX/Overworld UI.md",
