@@ -6,6 +6,7 @@
       {
         "id": "ab5b9714c820c03c",
         "type": "tabs",
+        "dimension": 57.97448165869219,
         "children": [
           {
             "id": "2a20ba105b0fe672",
@@ -13,22 +14,23 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tasks/Feature Checklist.md",
+                "file": "Technical/Engine Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Feature Checklist"
+              "title": "Engine Architecture"
             }
           }
         ]
       },
       {
-        "id": "3169f4b9ea08c996",
+        "id": "0f43ea36b8c52c0e",
         "type": "tabs",
+        "dimension": 42.025518341307816,
         "children": [
           {
-            "id": "7cc866ab33a182ba",
+            "id": "4bcd69217e701ec2",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -184,14 +186,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7cc866ab33a182ba",
+  "active": "2a20ba105b0fe672",
   "lastOpenFiles": [
+    "Technical/Odin Raylib Setup.md",
+    "Concepts/Inspirations.md",
+    "Concepts/Game Pillars.md",
+    "Concepts/Core Idea.md",
+    "Project Fleetborn.md",
     "Tasks/Feature Checklist.md",
     "Milestones/Weekly Log.md",
     "Milestones/Roadmap.md",
     "Technical/Engine Architecture.md",
     "Technical/Untitled.md",
-    "Technical/Odin Raylib Setup.md",
     "UI UX/Menus.md",
     "UI UX/Overworld UI.md",
     "UI UX/Battle Viewer UI.md",
@@ -208,10 +214,6 @@
     "Game Design/AI Behavior.md",
     "Game Design/Ship Design.md",
     "Game Design/Fleet Management.md",
-    "Game Design/Game Loop.md",
-    "Narrative/Star Systems.md",
-    "Narrative/Key Characters.md",
-    "Narrative/Mission Overviews.md",
     "Untitled",
     "Tasks",
     "Milestones",
