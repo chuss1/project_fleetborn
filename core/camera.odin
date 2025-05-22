@@ -13,7 +13,7 @@ EditorCamera :: struct {
 	mouse_locked: bool,
 }
 
-update_editor_camera :: proc(ec: ^EditorCamera, dt: f32) {
+update_editor_camera :: proc(ec: ^EditorCamera, input: ^InputBinding, dt: f32) {
 	cam := &ec.camera
 
 	forward := rl.Vector3Normalize(cam.target - cam.position)
@@ -21,7 +21,7 @@ update_editor_camera :: proc(ec: ^EditorCamera, dt: f32) {
 	up := cam.up
 
 	// Mouse look
-	if rl.IsMouseButtonDown(rl.MouseButton.RIGHT) {
+	if rl.IsMouseButtonDown(input.look_button) {
 		if !ec.mouse_locked {
 			rl.DisableCursor()
 			ec.mouse_locked = true
@@ -44,40 +44,40 @@ update_editor_camera :: proc(ec: ^EditorCamera, dt: f32) {
 	}
 
 	// Movement
-	if rl.IsKeyDown(rl.KeyboardKey.W) {
+	if rl.IsKeyDown(input.forward) {
 		cam.position += forward * (ec.move_speed * dt)
 		cam.target += forward * (ec.move_speed * dt)
 	}
-	if rl.IsKeyDown(rl.KeyboardKey.S) {
+	if rl.IsKeyDown(input.backward) {
 		cam.position -= forward * (ec.move_speed * dt)
 		cam.target -= forward * (ec.move_speed * dt)
 	}
-	if rl.IsKeyDown(rl.KeyboardKey.A) {
+	if rl.IsKeyDown(input.left) {
 		cam.position -= right * (ec.move_speed * dt)
 		cam.target -= right * (ec.move_speed * dt)
 	}
-	if rl.IsKeyDown(rl.KeyboardKey.D) {
+	if rl.IsKeyDown(input.right) {
 		cam.position += right * (ec.move_speed * dt)
 		cam.target += right * (ec.move_speed * dt)
 	}
-	if rl.IsKeyDown(rl.KeyboardKey.Q) {
+	if rl.IsKeyDown(input.down) {
 		cam.position -= up * (ec.move_speed * dt)
 		cam.target -= up * (ec.move_speed * dt)
 	}
-	if rl.IsKeyDown(rl.KeyboardKey.E) {
+	if rl.IsKeyDown(input.up) {
 		cam.position += up * (ec.move_speed * dt)
 		cam.target += up * (ec.move_speed * dt)
 	}
 
 	// Zoom
-	zoom := rl.GetMouseWheelMove() * ec.zoom_speed
+	zoom := input.zoom_axis * ec.zoom_speed
 	if zoom != 0 {
 		cam.position += forward * zoom
 	}
 
 	// Pan
-	if rl.IsMouseButtonDown(rl.MouseButton.MIDDLE) {
-		pan := rl.GetMouseDelta()
+	if rl.IsMouseButtonDown(input.pan_button) {
+		pan := input.pan_axis
 		panX := right * (-pan.x * ec.pan_speed)
 		panY := up * (pan.y * ec.pan_speed)
 		cam.position += panX + panY
