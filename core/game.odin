@@ -5,7 +5,7 @@ import rl "vendor:raylib"
 
 main :: proc() {
 	rl.InitWindow(1920, 1080, "Project Fleetborn")
-	rl.SetTargetFPS(60)
+	rl.SetTargetFPS(120)
 
 	cube_model := rl.LoadModelFromMesh(rl.GenMeshCube(3.0, 1.0, 1.0))
 
@@ -46,12 +46,6 @@ main :: proc() {
 
 		if input_state.click_world_pos_set {
 			fleet.current_dest = input_state.click_world_pos
-			fmt.println(
-				"Fleet dest updated: %f, %f, %f",
-				fleet.current_dest.x,
-				fleet.current_dest.y,
-				fleet.current_dest.z,
-			)
 		}
 
 		update_fleet_position(&fleet, dt)
