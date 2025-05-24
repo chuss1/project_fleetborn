@@ -13,6 +13,23 @@ EditorCamera :: struct {
 	mouse_locked: bool,
 }
 
+init_editor_camera :: proc() -> EditorCamera {
+	return EditorCamera {
+		camera = rl.Camera3D {
+			position = rl.Vector3{10.0, 10.0, 10.0},
+			target = rl.Vector3{0.0, 0.0, 0.0},
+			up = rl.Vector3{0.0, 1.0, 0.0},
+			fovy = 45.0,
+			projection = rl.CameraProjection.PERSPECTIVE,
+		},
+		move_speed = 20.0,
+		rot_speed = 0.002,
+		pan_speed = 0.1,
+		zoom_speed = 2.0,
+		mouse_locked = false,
+	}
+}
+
 update_editor_camera :: proc(ec: ^EditorCamera, input: ^InputBinding, dt: f32) {
 	cam := &ec.camera
 

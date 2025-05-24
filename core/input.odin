@@ -52,29 +52,42 @@ get_updated_bindings :: proc(base: ^InputBinding) -> InputBinding {
 InputState :: struct {
 	mouse_position:      rl.Vector2,
 	mouse_clicked:       bool,
+	mouse_released:      bool,
+	mouse_held:          bool,
 	click_world_pos:     rl.Vector3,
 	click_world_pos_set: bool,
+	hover_world_ray:     rl.Ray,
+	hover_world_pos:     rl.Vector3,
+	hover_world_pos_set: bool,
 }
 
 
 update_input_state :: proc(bindings: ^InputBinding, input: ^InputState, camera: rl.Camera3D) {
 	input.mouse_position = rl.GetMousePosition()
 	input.mouse_clicked = rl.IsMouseButtonPressed(bindings.interact)
+	input.mouse_held = rl.IsMouseButtonDown(bindings.interact)
+	input.mouse_released = rl.IsMouseButtonReleased(bindings.interact)
 
+	input.hover_world_ray = rl.GetScreenToWorldRay(input.mouse_position, camera)
+	input.hover_world_pos_set = false
 	input.click_world_pos_set = false
-	if input.mouse_clicked {
-		ray := rl.GetScreenToWorldRay(input.mouse_position, camera)
-		hit := rl.GetRayCollisionQuad(
-			ray,
-			rl.Vector3{-100, 0, -100},
-			rl.Vector3{100, 0, -100},
-			rl.Vector3{100, 0, 100},
-			rl.Vector3{-100, 0, 100},
-		)
-		if hit.hit {
-			input.click_world_pos = hit.point
-			input.click_world_pos.y = 0.5
-			input.click_world_pos_set = true
-		}
+
+	hover_hit := rl.GetRayCollisionQuad(
+		input.hover_world_ray,
+		rl.Vector3{-100, 0, -100},
+		rl.Vector3{100, 0, -100},
+		rl.Vector3{100, 0, 100},
+		rl.Vector3{-100, 0, 100},
+	)
+	if hover_hit.hit {
+		input.hover_world_pos = hover_hit.point
+		input.hover_world_pos.y = 0.5
+		input.hover_world_pos_set = true
 	}
+
+	if input.mouse_clicked {
+		input.click_world_pos = input.hover_world_pos
+		input.click_world_pos_set = input.hover_world_pos_set
+	}
+
 }
