@@ -7,6 +7,7 @@ import rl "vendor:raylib"
 EditorCamera :: struct {
 	camera:       rl.Camera3D,
 	move_speed:   f32,
+	speed_mult:   f32,
 	rot_speed:    f32,
 	pan_speed:    f32,
 	zoom_speed:   f32,
@@ -23,6 +24,7 @@ init_editor_camera :: proc() -> EditorCamera {
 			projection = rl.CameraProjection.PERSPECTIVE,
 		},
 		move_speed = 20.0,
+		speed_mult = 1.0,
 		rot_speed = 0.002,
 		pan_speed = 0.1,
 		zoom_speed = 2.0,
@@ -33,9 +35,16 @@ init_editor_camera :: proc() -> EditorCamera {
 update_editor_camera :: proc(ec: ^EditorCamera, input: ^InputBinding, dt: f32) {
 	cam := &ec.camera
 
+	is_sped_up: bool = false
+	speed_mult := ec.speed_mult
+
 	forward := rl.Vector3Normalize(cam.target - cam.position)
 	right := rl.Vector3Normalize(rl.Vector3CrossProduct(forward, cam.up))
 	up := cam.up
+
+	if rl.IsKeyDown(input.speed_up) {
+		speed_mult = 2.0
+	}
 
 	// Mouse look
 	if rl.IsMouseButtonDown(input.look_button) {
@@ -60,30 +69,32 @@ update_editor_camera :: proc(ec: ^EditorCamera, input: ^InputBinding, dt: f32) {
 		ec.mouse_locked = false
 	}
 
+	move_speed := ec.move_speed * speed_mult
+
 	// Movement
 	if rl.IsKeyDown(input.forward) {
-		cam.position += forward * (ec.move_speed * dt)
-		cam.target += forward * (ec.move_speed * dt)
+		cam.position += forward * (move_speed * dt)
+		cam.target += forward * (move_speed * dt)
 	}
 	if rl.IsKeyDown(input.backward) {
-		cam.position -= forward * (ec.move_speed * dt)
-		cam.target -= forward * (ec.move_speed * dt)
+		cam.position -= forward * (move_speed * dt)
+		cam.target -= forward * (move_speed * dt)
 	}
 	if rl.IsKeyDown(input.left) {
-		cam.position -= right * (ec.move_speed * dt)
-		cam.target -= right * (ec.move_speed * dt)
+		cam.position -= right * (move_speed * dt)
+		cam.target -= right * (move_speed * dt)
 	}
 	if rl.IsKeyDown(input.right) {
-		cam.position += right * (ec.move_speed * dt)
-		cam.target += right * (ec.move_speed * dt)
+		cam.position += right * (move_speed * dt)
+		cam.target += right * (move_speed * dt)
 	}
 	if rl.IsKeyDown(input.down) {
-		cam.position -= up * (ec.move_speed * dt)
-		cam.target -= up * (ec.move_speed * dt)
+		cam.position -= up * (move_speed * dt)
+		cam.target -= up * (move_speed * dt)
 	}
 	if rl.IsKeyDown(input.up) {
-		cam.position += up * (ec.move_speed * dt)
-		cam.target += up * (ec.move_speed * dt)
+		cam.position += up * (move_speed * dt)
+		cam.target += up * (move_speed * dt)
 	}
 
 	// Zoom
