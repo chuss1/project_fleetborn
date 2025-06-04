@@ -12,7 +12,11 @@ main :: proc() {
 	camera := init_editor_camera()
 	input_state: InputState
 
-	create_ship(Ship_Class.Flanker)
+	new_ship := create_ship(Ship_Class.Flanker)
+	add_ship_to_fleet(new_ship, &fleet)
+
+	new_ship2 := create_ship(Ship_Class.Sniper)
+	add_ship_to_fleet(new_ship2, &fleet)
 
 	for !rl.WindowShouldClose() {
 		dt := rl.GetFrameTime()

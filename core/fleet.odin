@@ -4,7 +4,7 @@ import "core:fmt"
 import rl "vendor:raylib"
 
 Fleet :: struct {
-	ship_count:    i32,
+	ship_group:    [dynamic]Base_Ship,
 	default_pos:   rl.Vector3,
 	default_size:  rl.Vector3,
 	default_model: rl.Model,
@@ -32,6 +32,17 @@ init_fleet :: proc(model: rl.Model) -> Fleet {
 		bounding_box = rl.BoundingBox{},
 		highlighted = false,
 	}
+}
+
+add_ship_to_fleet :: proc(ship: Base_Ship, f: ^Fleet) {
+	for i in f.ship_group {
+		if i.id == ship.id {
+			fmt.println("Ship already added to fleet")
+			return
+		}
+	}
+	fmt.println("Adding Ship to fleet")
+	append(&f.ship_group, ship)
 }
 
 draw_fleet :: proc(f: Fleet) {
