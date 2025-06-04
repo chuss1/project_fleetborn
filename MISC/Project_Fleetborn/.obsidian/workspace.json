@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core Features/Overworld.md",
+                "file": "Concepts/Core Idea.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Overworld"
+              "title": "Core Idea"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 249.5
   },
   "right": {
     "id": "7b88cd79b1d23805",
@@ -168,13 +168,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2a20ba105b0fe672",
+  "active": "0f1053148e0d7d48",
   "lastOpenFiles": [
+    "Concepts/Inspirations.md",
+    "Concepts/Core Idea.md",
+    "Core Features/Overworld.md",
+    "Core Features/Fleet Formation.md",
     "Core Features/Planetary Visits.md",
     "Core Features/Fleet-wide storage.md",
-    "Core Features/Fleet Formation.md",
     "Templates/General Sheet Template.md",
-    "Core Features/Overworld.md",
     "Core Features/Simulation Field.md",
     "Core Features/Ship yard.md",
     "Core Features/Resource System.md",
@@ -182,8 +184,6 @@
     "Untitled.md",
     "Technical/Engine Architecture.md",
     "Core Features",
-    "Concepts/Core Idea.md",
-    "Concepts/Inspirations.md",
     "Concepts/Game Pillars.md",
     "Technical/Odin Raylib Setup.md",
     "Project Fleetborn.md",

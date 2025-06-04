@@ -12,6 +12,8 @@ main :: proc() {
 	camera := init_editor_camera()
 	input_state: InputState
 
+	create_ship(Ship_Class.Flanker)
+
 	for !rl.WindowShouldClose() {
 		dt := rl.GetFrameTime()
 

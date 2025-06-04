@@ -4,6 +4,7 @@ import "core:fmt"
 import rl "vendor:raylib"
 
 Fleet :: struct {
+	ship_count:    i32,
 	default_pos:   rl.Vector3,
 	default_size:  rl.Vector3,
 	default_model: rl.Model,
