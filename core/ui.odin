@@ -1,5 +1,6 @@
 package game
 
+import "core:fmt"
 import rl "vendor:raylib"
 
 draw_ui :: proc() {
@@ -10,4 +11,11 @@ draw_ui :: proc() {
 		20,
 		rl.LIGHTGRAY,
 	)
+}
+
+
+draw_fleet_ui_main :: proc(fleet: ^Fleet) {
+	if !fleet.selected {return}
+
+	fleet.selected = rl.GuiWindowBox((rl.Rectangle){144, 144, 128, 48}, "FLEET MENU") == 0
 }

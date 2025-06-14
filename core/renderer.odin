@@ -19,5 +19,6 @@ draw_scene :: proc(fleet: ^Fleet, camera: EditorCamera) {
 
 	rl.EndMode3D()
 	draw_ui()
+	draw_fleet_ui_main(fleet)
 	rl.EndDrawing()
 }

@@ -16,6 +16,7 @@ Fleet :: struct {
 	speed:         f32,
 	bounding_box:  rl.BoundingBox,
 	highlighted:   bool,
+	selected:      bool,
 }
 
 init_fleet :: proc(model: rl.Model) -> Fleet {
@@ -31,6 +32,7 @@ init_fleet :: proc(model: rl.Model) -> Fleet {
 		speed = 5.0,
 		bounding_box = rl.BoundingBox{},
 		highlighted = false,
+		selected = false,
 	}
 }
 
@@ -46,13 +48,24 @@ add_ship_to_fleet :: proc(ship: Base_Ship, f: ^Fleet) {
 }
 
 draw_fleet :: proc(f: Fleet) {
+	color := f.color
+
+	if f.highlighted {
+		color = rl.YELLOW
+	}
+
+	if f.selected {
+		color = rl.GREEN
+	}
+
+
 	rl.DrawModelEx(
 		f.current_model,
 		f.current_pos,
 		rl.Vector3{0.0, 1.0, 0.0},
 		0.0,
 		f.current_size,
-		f.color,
+		color,
 	)
 }
 
@@ -64,6 +77,7 @@ reset_fleet :: proc(f: ^Fleet) {
 }
 
 update_fleet_position :: proc(fleet: ^Fleet, dt: f32) {
+	if !fleet.selected {return}
 	dir := fleet.current_dest - fleet.current_pos
 	dist := rl.Vector3Length(dir)
 
@@ -95,8 +109,12 @@ handle_fleet_selection :: proc(fleet: ^Fleet, input: ^InputState) {
 	if input.mouse_clicked {
 		if fleet.highlighted {
 			fmt.println("Selected Fleet")
-		} else {
+			fleet.selected = true
+		} else if fleet.selected {
+			fmt.println("Moving Selected Fleet")
 			fleet.current_dest = input.click_world_pos
+		} else {
+			fleet.selected = false
 		}
 	}
 }
